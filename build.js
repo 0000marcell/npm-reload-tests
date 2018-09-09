@@ -1,9 +1,21 @@
 var fs = require('fs');
 var path = require('path');
 
-return module.exports = {
-  build: function(src, dest) {
-    let fileData = fs.readFileSync(path.join(__dirname, src), 
+var files = ['./public/OHomePage', './public/OLoginPage'];
+
+module.exports = {
+  buildAll: function() {
+    files.forEach((file) => {
+      let pageName = path.basename(file).toLowerCase();
+      let src = file.
+      this.build(src, dist);  
+    });
+  },
+  replacePartial: function(src, dest) {
+    console.log('is path absolute: ', path.isAbsolute(src));
+    if(!path.isAbsolute(src)) 
+      src = path.join(__dirname, src);
+    let fileData = fs.readFileSync(src, 
    'utf8');
     let partialName,
       partialData;

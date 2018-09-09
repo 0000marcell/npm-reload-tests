@@ -30,8 +30,8 @@ server.listen(app.get('port'), function () {
   console.log('Web server listening on port ' + app.get('port'))
 })
 
-watch(__dirname + "/public", { recursive: true }, function(evt, name) {
-  console.log('evt: ', evt);
-  console.log('name: ', name);
-  build.build('./public/OHomePage/ohomepage.js', './test.js');
+watch(__dirname + "/public", { recursive: true }, function(evt, src) {
+  console.log('src: ', src);
+  var dist = src.replace('public', 'build');
+  build.build(src, dist);
 });
