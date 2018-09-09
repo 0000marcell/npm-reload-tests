@@ -4,6 +4,7 @@ var path = require('path')
 var bodyParser = require('body-parser')
 var logger = require('morgan')
 var watch = require('node-watch')
+var build = require('./build');
  
 var app = express()
  
@@ -30,7 +31,7 @@ server.listen(app.get('port'), function () {
 })
 
 watch(__dirname + "/public", { recursive: true }, function(evt, name) {
-  console.log('file changed');
   console.log('evt: ', evt);
   console.log('name: ', name);
+  build.build('./public/OHomePage/ohomepage.js', './test.js');
 });
